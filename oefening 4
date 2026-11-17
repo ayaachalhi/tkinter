@@ -1,0 +1,33 @@
+import tkinter as tk
+
+venster = tk.Tk()
+venster.geometry("300x200")
+
+knop1 = tk.Button(
+    venster,
+    text='Hallo',
+    command=venster,
+    bg='#4CAF50',
+    fg='white',
+    font=('Arial', 12),
+).pack()
+
+knop2 = tk.Button(
+    venster,
+    text='verder',
+    command=venster,
+    bg='#4CAF50',
+    fg='white',
+    font=('Arial', 12),
+).pack()
+
+knop3 = tk.Button(
+    venster,
+    text='doorgaan',
+    command=venster,
+    bg='#4CAF50',
+    fg='white',
+    font=('Arial', 12),
+).pack()
+
+venster.mainloop()
