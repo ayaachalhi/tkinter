@@ -1,0 +1,16 @@
+import tkinter as tk
+
+venster=tk.Tk()
+venster.geometry("300x200")
+tk.Label(venster,text="Hallo Tkinter").pack()
+
+knop=tk.Button(
+    venster,
+    text='knop',
+    command=venster,
+    bg='#4CAF50',
+    fg='white',
+    font=('Arial', 12),
+).pack()
+
+venster.mainloop()
