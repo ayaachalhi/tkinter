@@ -38,7 +38,7 @@ def wis_velden():
 
 root = tk.Tk()
 root.title("rekenmachine")
-root.geometry("400x300")
+root.geometry("500x300")
 
 # Label bovenaan met pack()
 titel = tk.Label(root, text="rekenmachine", font=("Arial", 14))
@@ -65,19 +65,19 @@ ingaveGetal2.grid(row=2, column=2, padx=10, pady=10, columnspan=3)
 
 #knop
 buttonMaal = tk.Button(root, text="X", command=vermenigvuldigen)
-buttonMaal.grid(row=3, column=1, ipadx=15, ipady=10, padx=2, pady=10)
+buttonMaal.grid(row=3, column=1, ipadx=5, ipady=5, padx=5, pady=10)
 
 buttonDelen = tk.Button(root, text="/", command=delen)
-buttonDelen.grid(row=3, column=2, ipadx=15, ipady=10, padx=2, pady=10)
+buttonDelen.grid(row=3, column=2, ipadx=15, ipady=10, padx=5, pady=10)
 
 buttonSom = tk.Button(root, text="+", command=optellen)
-buttonSom.grid(row=3, column=3, ipadx=15, ipady=10, padx=2, pady=10)
+buttonSom.grid(row=3, column=5, ipadx=15, ipady=10, padx=5, pady=10)
 
 buttonMinus = tk.Button(root, text="-", command=aftrekken)
-buttonMinus.grid(row=3, column=4, ipadx=15, ipady=10, padx=2, pady=10)
+buttonMinus.grid(row=3, column=4, ipadx=15, ipady=10, padx=5, pady=10)
 
 buttonClear = tk.Button(root, text="Clear", command=wis_velden)
-buttonClear.grid(row=3, column=5, ipadx=15, ipady=10, padx=2, pady=10)
+buttonClear.grid(row=3, column=3, ipadx=15, ipady=10, padx=5, pady=10)
 # Knop onderaan
 labelResultaat = tk.Label(root, text="Resultaat")
 labelResultaat.grid(row=4, column=1, padx=10, pady=10)
@@ -86,9 +86,6 @@ uitgaveResultaat = tk.Entry(root)
 uitgaveResultaat.grid(row=4, column=2, columnspan=3, padx=10, pady=10)
 
 root.mainloop()
-
-
-
 
 ------------------------------------------------------------------------------
 
