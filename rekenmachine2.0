@@ -1,67 +1,92 @@
-from tkinter import *
+import tkinter as tk
 
 
 
 def optellen():
-    waarde1=float(entry_getal1.get())
-    waarde2=float(entry_getal2.get())
+    waarde1=float(ingaveGetal1.get())
+    waarde2=float(ingaveGetal2.get())
     resultaat=waarde1+waarde2
-    entry_resultaat.delete(0,resultaat)
-    entry_resultaat.insert(0,resultaat)
+    uitgaveResultaat.delete(0,tk.END)
+    uitgaveResultaat.insert(0,resultaat)
 
 
 def aftrekken():
-    waarde1 = float(entry_getal1.get())
-    waarde2 = float(entry_getal2.get())
+    waarde1 = float(ingaveGetal1.get())
+    waarde2 = float(ingaveGetal2.get())
     resultaat=waarde1-waarde2
-    entry_resultaat.delete(0, resultaat)
-    entry_resultaat.insert(0, resultaat)
+    uitgaveResultaat.delete(0, tk.END)
+    uitgaveResultaat.insert(0, resultaat)
 
 def vermenigvuldigen():
-    waarde1=float(entry_getal1.get())
-    waarde2=float(entry_getal2.get())
-    resultaat=waarde1*waarde2
-    entry_resultaat.delete(0,resultaat)
-    entry_resultaat.insert(0,resultaat)
-def delen():
-    waarde1=float(entry_getal1.get())
-    waarde2=float(entry_getal2.get())
-    resultaat=waarde1/waarde2
-    entry_resultaat.delete(0,resultaat)
-    entry_resultaat.insert(0,resultaat)
+    waarde1=float(ingaveGetal1.get())
+    waarde2=float(ingaveGetal2.get())
+    resultaat=round(waarde1*waarde2,2)
+    uitgaveResultaat.delete(0,tk.END)
+    uitgaveResultaat.insert(0,resultaat)
 
-root = Tk()
+def delen():
+    waarde1=float(ingaveGetal1.get())
+    waarde2=float(ingaveGetal2.get())
+    resultaat=round(waarde1/waarde2,2)
+    uitgaveResultaat.delete(0,tk.END)
+    uitgaveResultaat.insert(0,resultaat)
+
+def wis_velden():
+    ingaveGetal1.delete(0, tk.END)
+    ingaveGetal2.delete(0, tk.END)
+    uitgaveResultaat.delete(0, tk.END)
+
+root = tk.Tk()
 root.title("rekenmachine")
+root.geometry("400x300")
 
 # Label bovenaan met pack()
-titel = Label(root, text="rekenmachine", font=("Arial", 14))
-titel.pack(pady=10)
+titel = tk.Label(root, text="rekenmachine", font=("Arial", 14))
+titel.grid(row=0, column=3, padx=10, pady=10)
 
 # Frame voor de overige widgets
-frame = Frame(root)
-frame.pack(padx=15, pady=15)
+frame = tk.Frame(root)
+frame.grid(padx=15, pady=15)
 
 # Labels en Entry-velden met grid()
-Label(frame, text="getal 1:").grid(row=0, column=0, padx=5, pady=5)
-entry_getal1 = Entry(frame)
-entry_getal1.grid(row=0, column=1, padx=5, pady=5,columnspan=3)
+labelGetal1 = tk.Label(root, text="Getal 1")
+labelGetal1.grid(row=1, column=1, padx=10, pady=10)
 
-Label(frame, text="getal 2").grid(row=1, column=0, padx=5, pady=5)
-entry_getal2 = Entry(frame)
-entry_getal2.grid(row=1, column=1, padx=5, pady=5,columnspan=3)
+labelGetal2 = tk.Label(root, text="Getal 2")
+labelGetal2.grid(row=2, column=1, padx=10, pady=10)
+
+ingaveGetal1 = tk.Entry(root)
+ingaveGetal1.grid(row=1, column=2, padx=10, pady=10, columnspan=3)
+
+ingaveGetal2 = tk.Entry(root)
+ingaveGetal2.grid(row=2, column=2, padx=10, pady=10, columnspan=3)
+
+
 
 #knop
-Button(frame, text="+", command=print).grid(row=2, column=0, padx=5, pady=5, command=optellen)
-Button(frame, text="-", command=print).grid(row=2, column=1, padx=5, pady=5, command=aftrekken)
-Button(frame, text="*", command=print).grid(row=2, column=2, padx=5, pady=5, command= vermenigvuldigen)
-Button(frame, text=":", command=print).grid(row=2, column=3, padx=5, pady=5, command= delen)
+buttonMaal = tk.Button(root, text="X", command=vermenigvuldigen)
+buttonMaal.grid(row=3, column=1, ipadx=15, ipady=10, padx=2, pady=10)
 
+buttonDelen = tk.Button(root, text="/", command=delen)
+buttonDelen.grid(row=3, column=2, ipadx=15, ipady=10, padx=2, pady=10)
+
+buttonSom = tk.Button(root, text="+", command=optellen)
+buttonSom.grid(row=3, column=3, ipadx=15, ipady=10, padx=2, pady=10)
+
+buttonMinus = tk.Button(root, text="-", command=aftrekken)
+buttonMinus.grid(row=3, column=4, ipadx=15, ipady=10, padx=2, pady=10)
+
+buttonClear = tk.Button(root, text="Clear", command=wis_velden)
+buttonClear.grid(row=3, column=5, ipadx=15, ipady=10, padx=2, pady=10)
 # Knop onderaan
-Label(frame, text="resultaat").grid(row=3, column=0, padx=5, pady=5 )
-entry_resultaat = Entry(frame)
-entry_resultaat.grid(row=3, column=1, padx=5, pady=5,columnspan=3)
+labelResultaat = tk.Label(root, text="Resultaat")
+labelResultaat.grid(row=4, column=1, padx=10, pady=10)
+
+uitgaveResultaat = tk.Entry(root)
+uitgaveResultaat.grid(row=4, column=2, columnspan=3, padx=10, pady=10)
 
 root.mainloop()
+
 
 
 
