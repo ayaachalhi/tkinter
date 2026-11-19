@@ -1,0 +1,64 @@
+from tkinter import *
+
+
+
+def optellen():
+    waarde1=float(entry_getal1.get())
+    waarde2=float(entry_getal2.get())
+    resultaat=waarde1+waarde2
+    entry_resultaat.delete(0,resultaat)
+    entry_resultaat.insert(0,resultaat)
+
+
+def aftrekken():
+    waarde1 = float(entry_getal1.get())
+    waarde2 = float(entry_getal2.get())
+    resultaat=waarde1-waarde2
+    entry_resultaat.delete(0, resultaat)
+    entry_resultaat.insert(0, resultaat)
+
+def vermenigvuldigen():
+    waarde1=float(entry_getal1.get())
+    waarde2=float(entry_getal2.get())
+    resultaat=waarde1*waarde2
+    entry_resultaat.delete(0,resultaat)
+    entry_resultaat.insert(0,resultaat)
+def delen():
+    waarde1=float(entry_getal1.get())
+    waarde2=float(entry_getal2.get())
+    resultaat=waarde1/waarde2
+    entry_resultaat.delete(0,resultaat)
+    entry_resultaat.insert(0,resultaat)
+
+root = Tk()
+root.title("rekenmachine")
+
+# Label bovenaan met pack()
+titel = Label(root, text="rekenmachine", font=("Arial", 14))
+titel.pack(pady=10)
+
+# Frame voor de overige widgets
+frame = Frame(root)
+frame.pack(padx=15, pady=15)
+
+# Labels en Entry-velden met grid()
+Label(frame, text="getal 1:").grid(row=0, column=0, padx=5, pady=5)
+entry_getal1 = Entry(frame)
+entry_getal1.grid(row=0, column=1, padx=5, pady=5,columnspan=3)
+
+Label(frame, text="getal 2").grid(row=1, column=0, padx=5, pady=5)
+entry_getal2 = Entry(frame)
+entry_getal2.grid(row=1, column=1, padx=5, pady=5,columnspan=3)
+
+#knop
+Button(frame, text="+", command=print).grid(row=2, column=0, padx=5, pady=5, command=optellen)
+Button(frame, text="-", command=print).grid(row=2, column=1, padx=5, pady=5, command=aftrekken)
+Button(frame, text="*", command=print).grid(row=2, column=2, padx=5, pady=5, command= vermenigvuldigen)
+Button(frame, text=":", command=print).grid(row=2, column=3, padx=5, pady=5, command= delen)
+
+# Knop onderaan
+Label(frame, text="resultaat").grid(row=3, column=0, padx=5, pady=5 )
+entry_resultaat = Entry(frame)
+entry_resultaat.grid(row=3, column=1, padx=5, pady=5,columnspan=3)
+
+root.mainloop()
