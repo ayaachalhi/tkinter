@@ -62,3 +62,74 @@ entry_resultaat = Entry(frame)
 entry_resultaat.grid(row=3, column=1, padx=5, pady=5,columnspan=3)
 
 root.mainloop()
+
+
+
+------------------------------------------------------------------------------
+
+from tkinter import *
+
+
+def bereken(bewerking):
+    try:
+        waarde1 = float(entry_getal1.get())
+        waarde2 = float(entry_getal2.get())
+
+        if bewerking == "+":
+            resultaat = waarde1 + waarde2
+        elif bewerking == "-":
+            resultaat = waarde1 - waarde2
+        elif bewerking == "*":
+            resultaat = waarde1 * waarde2
+        elif bewerking == ":":
+            if waarde2 == 0:
+                resultaat = "Kan niet delen door 0"
+            else:
+                resultaat = waarde1 / waarde2
+    except ValueError:
+        resultaat = "Ongeldige invoer"
+
+    entry_resultaat.delete(0, END)
+    entry_resultaat.insert(0, str(resultaat))
+
+
+root = Tk()
+root.title("Rekenmachine")
+
+# Label bovenaan met pack()
+titel = Label(root, text="Rekenmachine", font=("Arial", 14))
+titel.pack(pady=10)
+
+# Frame voor de overige widgets
+frame = Frame(root)
+frame.pack(padx=15, pady=15)
+
+# Labels en Entry-velden met grid()
+Label(frame, text="Getal 1:").grid(row=0, column=0, padx=5, pady=5)
+entry_getal1 = Entry(frame)
+entry_getal1.grid(row=0, column=1, padx=5, pady=5, columnspan=3)
+
+Label(frame, text="Getal 2:").grid(row=1, column=0, padx=5, pady=5)
+entry_getal2 = Entry(frame)
+entry_getal2.grid(row=1, column=1, padx=5, pady=5, columnspan=3)
+
+# Knoppen
+Button(frame, text="+", width=5, command=lambda: bereken("+")).grid(
+    row=2, column=0, padx=5, pady=5
+)
+Button(frame, text="-", width=5, command=lambda: bereken("-")).grid(
+    row=2, column=1, padx=5, pady=5
+)
+Button(frame, text="*", width=5, command=lambda: bereken("*")).grid(
+    row=2, column=2, padx=5, pady=5
+)
+Button(frame, text=":", width=5, command=lambda: bereken(":")).grid(
+    row=2, column=3, padx=5, pady=5
+)
+
+# Resultaat onderaan
+Label(frame, text="Resultaat:").grid(row=3, column=0, padx=5, pady=5)
+entry_resultaat = Entry(frame)
+entry_resultaat.grid(row=3, column=1, padx=5, pady=5, columnspan=3)
+
+root.mainloop()
