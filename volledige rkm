@@ -2,6 +2,97 @@ import tkinter as tk
 root = tk.Tk()
 root.title("rekenmachine")
 root.geometry("250x350")
+root.configure(bg="lightblue")
+
+nieuw_getal = False
+#functie toevoegen om op knop te drukken
+def klik(waarde):
+    global nieuw_getal
+
+    if nieuw_getal:
+        resultaat.delete(0, tk.END)
+        nieuw_getal = False
+
+    resultaat.insert(tk.END, waarde)
+#andere functies
+def clear():
+    resultaat.delete(0, tk.END)
+def bereken():
+    global nieuw_getal
+
+    try:
+        som = resultaat.get()
+        antwoord = eval(som)
+
+        resultaat.delete(0, tk.END)
+        resultaat.insert(0, antwoord)
+
+        nieuw_getal = True
+
+    except:
+        resultaat.delete(0, tk.END)
+        resultaat.insert(0, "Error")
+
+
+resultaat=tk.Entry(root,)
+resultaat.grid(row=0, column=1,ipadx=30, ipady=10, padx=5, pady=10, columnspan=4)
+
+button0 = tk.Button(root, text="0",command=lambda: klik("0"),bg="lightblue")
+button0.grid(row=4, column=1, ipadx=15, ipady=10, padx=5, pady=10)
+
+button1 = tk.Button(root, text="1",command=lambda: klik("1"),bg="lightblue")
+button1.grid(row=3, column=1, ipadx=15, ipady=10, padx=5, pady=10)
+
+button2 = tk.Button(root, text="2", command=lambda: klik("2"),bg="lightblue")
+button2.grid(row=3, column=2, ipadx=15, ipady=10, padx=5, pady=10)
+
+button3 = tk.Button(root, text="3",command=lambda: klik("3"),bg="lightblue")
+button3.grid(row=3, column=3, ipadx=15, ipady=10, padx=5, pady=10)
+
+button4 = tk.Button(root, text="4",command=lambda: klik("4"),bg="lightblue")
+button4.grid(row=2, column=1, ipadx=15, ipady=10, padx=5, pady=10)
+
+button5 = tk.Button(root, text="5",command=lambda: klik("5"),bg="lightblue")
+button5.grid(row=2, column=2, ipadx=15, ipady=10, padx=5, pady=10)
+
+button6 = tk.Button(root, text="6",command=lambda: klik("6"),bg="lightblue")
+button6.grid(row=2, column=3, ipadx=15, ipady=10, padx=5, pady=10)
+
+button7 = tk.Button(root, text="7",command=lambda: klik("7"),bg="lightblue")
+button7.grid(row=1, column=1, ipadx=15, ipady=10, padx=5, pady=10)
+
+button8 = tk.Button(root, text="8",command=lambda: klik("8"),bg="lightblue")
+button8.grid(row=1, column=2, ipadx=15, ipady=10, padx=5, pady=10)
+
+button9 = tk.Button(root, text="9",command=lambda: klik("9"),bg="lightblue")
+button9.grid(row=1, column=3, ipadx=15, ipady=10, padx=5, pady=10)
+
+buttonMaal = tk.Button(root, text="X", command=lambda: klik("*"),bg="lightblue")
+buttonMaal.grid(row=3, column=4, ipadx=15, ipady=10, padx=5, pady=10)
+
+buttonDelen = tk.Button(root, text="/", command=lambda: klik("/"),bg="lightblue")
+buttonDelen.grid(row=4, column=4, ipadx=15, ipady=10, padx=5, pady=10)
+
+buttonSom = tk.Button(root, text="+",command=lambda: klik("+"),bg="lightblue")
+buttonSom.grid(row=1, column=4, ipadx=15, ipady=10, padx=5, pady=10)
+
+buttonMinus = tk.Button(root, text="-",command=lambda: klik("-"),bg="lightblue")
+buttonMinus.grid(row=2, column=4, ipadx=15, ipady=10, padx=5, pady=10)
+
+buttonClear = tk.Button(root, text="C", command=clear,bg="lightblue")
+buttonClear.grid(row=4, column=2, ipadx=15, ipady=10, padx=5, pady=10)
+
+labelResultaat = tk.Button(root, text="=",command=bereken,bg="lightblue")
+labelResultaat.grid(row=4, column=3, ipadx=15, ipady=10, padx=5, pady=10)
+
+
+root.mainloop()
+
+---------------------------------------------------------------------------------------
+import tkinter as tk
+root = tk.Tk()
+root.title("rekenmachine")
+root.geometry("250x350")
 
 #functie toevoegen om op knop te drukken
 def klik(waarde):
